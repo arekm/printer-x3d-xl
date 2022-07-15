@@ -56,6 +56,12 @@
 #define FAN_THERMO_MAX_TEMP 60
 #define FAN_THERMO_THERMISTOR_PIN -1
 #define FAN_THERMO_THERMISTOR_TYPE 1
+#undef Z_MIN_PIN
+#define Z_MIN_PIN -1
+#undef X_MAX_PIN
+#define X_MAX_PIN -1
+#undef Y_MAX_PIN
+#define Y_MAX_PIN -1
 
 //#define EXTERNALSERIAL  use Arduino serial library instead of build in. Requires more ram, has only 63 byte input buffer.
 // Uncomment the following line if you are using Arduino compatible firmware made for Arduino version earlier then 1.0
@@ -295,10 +301,10 @@ It also can add a delay to wait for spindle to run on full speed.
 #define max_software_endstop_z false
 #define DOOR_PIN -1
 #define DOOR_PULLUP 1
-#define DOOR_INVERTING 1
+#define DOOR_INVERTING 0
 #define ENDSTOP_X_BACK_MOVE 5
 #define ENDSTOP_Y_BACK_MOVE 5
-#define ENDSTOP_Z_BACK_MOVE 2
+#define ENDSTOP_Z_BACK_MOVE 5
 #define ENDSTOP_X_RETEST_REDUCTION_FACTOR 3
 #define ENDSTOP_Y_RETEST_REDUCTION_FACTOR 3
 #define ENDSTOP_Z_RETEST_REDUCTION_FACTOR 3
@@ -485,19 +491,19 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define FEATURE_Z_PROBE 1
 #define EXTRUDER_IS_Z_PROBE 0
 #define Z_PROBE_DISABLE_HEATERS 1
-#define Z_PROBE_BED_DISTANCE 1.5
+#define Z_PROBE_BED_DISTANCE 5
 #define Z_PROBE_PIN ORIG_Z_MIN_PIN
 #define Z_PROBE_PULLUP 1
 #define Z_PROBE_ON_HIGH 0
 #define Z_PROBE_X_OFFSET 21
 #define Z_PROBE_Y_OFFSET -26
 #define Z_PROBE_WAIT_BEFORE_TEST 0
-#define Z_PROBE_SPEED 3
+#define Z_PROBE_SPEED 1
 #define Z_PROBE_XY_SPEED 150
 #define Z_PROBE_SWITCHING_DISTANCE 6
 #define Z_PROBE_REPETITIONS 3
 #define Z_PROBE_USE_MEDIAN 0
-#define Z_PROBE_HEIGHT 0.85
+#define Z_PROBE_HEIGHT 1.58
 #define Z_PROBE_DELAY 0
 #define Z_PROBE_START_SCRIPT ""
 #define Z_PROBE_FINISHED_SCRIPT ""
@@ -933,16 +939,16 @@ Values must be in range 1..255
     "fanThermoThermistorType": 1,
     "scalePidToMax": 0,
     "zProbePin": "ORIG_Z_MIN_PIN",
-    "zProbeBedDistance": 1.5,
+    "zProbeBedDistance": 5,
     "zProbeDisableHeaters": "1",
     "zProbePullup": "1",
     "zProbeOnHigh": "0",
     "zProbeXOffset": 21,
     "zProbeYOffset": -26,
     "zProbeWaitBeforeTest": "0",
-    "zProbeSpeed": 3,
+    "zProbeSpeed": 1,
     "zProbeXYSpeed": 150,
-    "zProbeHeight": 0.85,
+    "zProbeHeight": 1.58,
     "zProbeStartScript": "",
     "zProbeFinishedScript": "",
     "featureAutolevel": "1",
@@ -962,15 +968,15 @@ Values must be in range 1..255
     "uiStartScreenDelay": 1000,
     "xEndstopBackMove": 5,
     "yEndstopBackMove": 5,
-    "zEndstopBackMove": 2,
+    "zEndstopBackMove": 5,
     "xEndstopRetestFactor": 3,
     "yEndstopRetestFactor": 3,
     "zEndstopRetestFactor": 3,
     "xMinPin": "ORIG_X_MIN_PIN",
     "yMinPin": "ORIG_Y_MIN_PIN",
-    "zMinPin": "ORIG_Z_MIN_PIN",
-    "xMaxPin": "ORIG_X_MAX_PIN",
-    "yMaxPin": "ORIG_Y_MAX_PIN",
+    "zMinPin": -1,
+    "xMaxPin": -1,
+    "yMaxPin": -1,
     "zMaxPin": "ORIG_Z_MAX_PIN",
     "x2MinPin": -1,
     "y2MinPin": -1,
@@ -1214,7 +1220,7 @@ Values must be in range 1..255
     "extruderIsZProbe": "0",
     "boardFanMinSpeed": 0,
     "doorPin": -1,
-    "doorEndstop": 1,
+    "doorEndstop": 0,
     "zhomePreRaise": 0,
     "zhomePreRaiseDistance": 10,
     "dualXResolution": "0",
@@ -1268,6 +1274,8 @@ Values must be in range 1..255
     "MAX31855SwCS": -1,
     "MAX31855SwCLK": -1,
     "tempGain": "1",
+    "safeHoming": "1",
+    "zProbeIIS2DH": "0",
     "uiAnimation": "0",
     "uiPresetBedTempPLA": 50,
     "uiPresetBedABS": 100,
